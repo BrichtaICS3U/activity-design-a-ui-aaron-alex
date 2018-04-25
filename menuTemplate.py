@@ -10,12 +10,15 @@ pygame.init()
 # Colours are defined using RGB values
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-GREEN = (0, 200, 0)
-BRIGHT_GREEN = (0, 255, 0)
-RED = (200, 0, 0)
+ORANGE = (242, 100, 25)
+BRIGHT_ORANGE = (243, 114, 45)
+RED = (234, 53, 70)
+BRIGHT_RED = (241,126,137)
+BRIGHT_BLUE = (45, 125, 210)
+BLUE = (67,188,205)
 
 # Open a new window
-# The window is defined as (width, height), measured in pixels
+ # The window is defined as (width, height), measured in pixels
 SCREENWIDTH = 800
 SCREENHEIGHT = 600
 
@@ -26,10 +29,11 @@ pygame.display.set_caption("My Button")
 # --- Text elements
 
 # Define text for title of game
-fontTitle = pygame.font.Font('freesansbold.ttf', 32)
-textSurfaceTitle = fontTitle.render('My Awesome Game!', True, BLACK) 
-textRectTitle = textSurfaceTitle.get_rect()
-textRectTitle.center = (200, 150)   # place the centre of the text
+#fontTitle = pygame.font.Font('freesansbold.ttf', 32)
+#textSurfaceTitle = fontTitle.render('My Awesome Game!', True, BLACK) 
+#textRectTitle = textSurfaceTitle.get_rect()
+#textRectTitle.center = (100, 150)   # place the centre of the text
+
 
 # This loop will continue until the user exits the game
 carryOn = True
@@ -44,7 +48,7 @@ while carryOn:
         if event.type == pygame.QUIT: # Player clicked close button
             carryOn = False
 
-    # Get mouse location
+    # Get mouse locationBRIGHT_
     mouse = pygame.mouse.get_pos()
     #print(mouse) # Uncomment to see mouse position in shell
 
@@ -62,19 +66,34 @@ while carryOn:
     # Buttons
 
     # Green button
-    if SCREENWIDTH/3-50 < mouse[0] < SCREENWIDTH/3+50 and SCREENHEIGHT/2 < mouse[1] < SCREENHEIGHT/2 + 50 and click[0] == 1:
-        pygame.draw.rect(screen, RED, (SCREENWIDTH/3-50, SCREENHEIGHT/2, 100, 50))
+    if SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT/4 < mouse[1] < SCREENHEIGHT/4 + 50 and click[0] == 1:
+        pygame.draw.rect(screen, RED, (SCREENWIDTH/2-50, SCREENHEIGHT/4, 100, 50))
         print('You pressed the button! You maniac!')
-    elif SCREENWIDTH/3-50 < mouse[0] < SCREENWIDTH/3+50 and SCREENHEIGHT/2 < mouse[1] < SCREENHEIGHT/2 + 50:
-        pygame.draw.rect(screen, BRIGHT_GREEN, (SCREENWIDTH/3-50, SCREENHEIGHT/2, 100, 50))
+    elif SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT/4 < mouse[1] < SCREENHEIGHT/4 + 50:
+        pygame.draw.rect(screen, ORANGE, (SCREENWIDTH/2-50, SCREENHEIGHT/4, 100, 50))
     else:
-        pygame.draw.rect(screen, GREEN, (SCREENWIDTH/3-50, SCREENHEIGHT/2, 100, 50))
+        pygame.draw.rect(screen, BRIGHT_ORANGE, (SCREENWIDTH/2-50, SCREENHEIGHT/4, 100, 50))
 
     # Red button
-    pygame.draw.rect(screen, RED, (SCREENWIDTH*2/3-50, SCREENHEIGHT/2, 100, 50))
+    if SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT*2/4 < mouse[1] < SCREENHEIGHT*2/4 + 50 and click[0] == 1:
+        pygame.draw.rect(screen, RED, (SCREENWIDTH/2-50, SCREENHEIGHT*2/4, 100, 50))
+        print('You have quit the Game!')
+    elif SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT*2/4 < mouse[1] < SCREENHEIGHT*2/4 + 50:
+        pygame.draw.rect(screen, BRIGHT_RED, (SCREENWIDTH/2-50, SCREENHEIGHT*2/4, 100, 50))
+    else:
+        pygame.draw.rect(screen, RED, (SCREENWIDTH/2-50, SCREENHEIGHT*2/4, 100, 50))
+        
+    # Blue button
+    if SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT*3/4 < mouse[1] < SCREENHEIGHT*3/4 + 50 and click[0] == 1:
+        pygame.draw.rect(screen, BLUE, (SCREENWIDTH/2-50, SCREENHEIGHT*3/4, 100, 50))
+        print('You have paused the game!')
+    elif SCREENWIDTH/2-50 < mouse[0] < SCREENWIDTH/2+50 and SCREENHEIGHT*3/4 < mouse[1] < SCREENHEIGHT*3/4 + 50:
+        pygame.draw.rect(screen, BRIGHT_BLUE, (SCREENWIDTH/2-50, SCREENHEIGHT*3/4, 100, 50))
+    else:
+        pygame.draw.rect(screen, BLUE, (SCREENWIDTH/2-50, SCREENHEIGHT*3/4, 100, 50))
 
     # Text
-    screen.blit(textSurfaceTitle, textRectTitle)
+    #screen.blit(textSurfaceTitle, textRectTitle)
 
     # Update the screen with queued shapes
     pygame.display.flip()
